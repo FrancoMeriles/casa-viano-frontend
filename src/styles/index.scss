@@ -1,0 +1,30 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.slick-dots li button:before {
+  font-size: 15px !important;
+  color: white !important;
+}
+
+.chakra-breadcrumb__list-item {
+  a {
+    color: #718096;
+  }
+  span[role='presentation'] {
+    color: #718096;
+  }
+}

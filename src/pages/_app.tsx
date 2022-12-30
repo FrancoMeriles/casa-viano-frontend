@@ -1,0 +1,36 @@
+import '../styles/index.scss'
+import type { AppProps } from 'next/app'
+
+/* Roboto Font */
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/700.css'
+
+/* Chakra UI */
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { theme as proTheme } from '@chakra-ui/pro-theme'
+
+export const theme = extendTheme(
+  {
+    colors: {
+      ...proTheme.colors,
+      brand: {
+        100: '#040419',
+        500: '#000054',
+        600: '#040419',
+      },
+    },
+    fonts: {
+      heading: `'Roboto', sans-serif`,
+      body: `'Roboto', sans-serif`,
+    },
+  },
+  proTheme
+)
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <ChakraProvider theme={theme}>
+      <Component {...pageProps} />
+    </ChakraProvider>
+  )
+}
