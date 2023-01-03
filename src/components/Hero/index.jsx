@@ -1,11 +1,14 @@
 import React from 'react'
-import { Box, Container, Text, Button, Image } from '@chakra-ui/react'
+import { Box, Container, Text, Button, Image, Heading } from '@chakra-ui/react'
 import { FaAngleRight } from 'react-icons/fa'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { useRouter } from 'next/router'
 
 const Hero = () => {
+  const router = useRouter()
+
   const settings = {
     arrows: false,
     dots: true,
@@ -52,14 +55,17 @@ const Hero = () => {
                 base: '0',
                 md: '50%',
               }}
-              pl="40px"
+              pl={{
+                base: '0',
+                md: '40px',
+              }}
               transform={{
                 base: 'inherit',
                 md: 'translateY(-50%)',
               }}
               maxW="600px"
             >
-              <Text
+              <Heading
                 fontSize="6xl"
                 fontWeight="bold"
                 color={{
@@ -70,7 +76,7 @@ const Hero = () => {
                 mb="10px"
               >
                 Comprá la mejor maquinaría usada del mercado
-              </Text>
+              </Heading>
               <Text
                 fontSize="2xl"
                 color={{
@@ -90,7 +96,7 @@ const Hero = () => {
                   bg: 'brand.500',
                   color: 'white',
                 }}
-                onClick={() => console.log('se clickeo btn 1')}
+                onClick={() => router.push(`/catalogo`)}
               >
                 Ver productos
               </Button>

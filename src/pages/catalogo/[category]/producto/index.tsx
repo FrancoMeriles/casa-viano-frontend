@@ -10,6 +10,7 @@ import {
   Flex,
   Button,
   Divider,
+  Heading,
 } from '@chakra-ui/react'
 import { FaWhatsapp } from 'react-icons/fa'
 
@@ -59,9 +60,9 @@ const Product = ({ category, slug }: Product) => {
             <Box>
               <Gallery images={images} />
               <Box mt="50px">
-                <Text fontSize="2xl" color="brand.500" fontWeight="bold">
+                <Heading fontSize="2xl" color="brand.500" fontWeight="bold">
                   Descripción
-                </Text>
+                </Heading>
                 <Divider m="15px 0" />
                 <Text p="16px" fontSize="1xl" lineHeight="30px" color="black">
                   Capacidad: 13m3. Chasis: compacto, ensamblado en bloque con la
@@ -73,9 +74,9 @@ const Product = ({ category, slug }: Product) => {
                   Sinfín: por gravedad, mediante de las boquillas inferiores con
                   apertura y cierre por medio de palancas.
                 </Text>
-                <Text fontSize="2xl" color="brand.500" fontWeight="bold">
+                <Heading fontSize="2xl" color="brand.500" fontWeight="bold">
                   Detalles técnicos
-                </Text>
+                </Heading>
                 <Divider m="15px 0" />
 
                 <Flex pt="20px" pb="10px" borderBottom="solid 1px #D0D0D0">
@@ -111,7 +112,7 @@ const Product = ({ category, slug }: Product) => {
               }}
               marginBottom={{
                 base: '40px',
-                lg: 'auto',
+                lg: 'inherit',
               }}
               gridRow={{
                 base: 1,
@@ -133,15 +134,16 @@ const Product = ({ category, slug }: Product) => {
                     DISPONIBLE
                   </Badge>
                 </Flex>
-                <Text
+                <Heading
                   fontSize="4xl"
                   color="brand.500"
                   fontWeight="bold"
                   lineHeight="50px"
+                  letterSpacing="0"
                   mt="30px"
                 >
                   Nombre de producto extenso de tres líneas de texto
-                </Text>
+                </Heading>
                 <Text fontSize="2xl" mt="20px">
                   Descripción resumida del producto que contempla hasta cuatro
                   líneas de texto. Para más detalle incluirlos en los campos de

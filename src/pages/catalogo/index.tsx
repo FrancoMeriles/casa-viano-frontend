@@ -1,7 +1,15 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import { Container, Text, Flex, Box, Image, Button } from '@chakra-ui/react'
+import {
+  Container,
+  Text,
+  Flex,
+  Box,
+  Image,
+  Button,
+  Heading,
+} from '@chakra-ui/react'
 
 import Header from '@components/Header'
 import Footer from '@components/Footer'
@@ -22,16 +30,17 @@ export default function Home() {
       <Breadcrumb />
       <main>
         <Container>
-          <Text
+          <Heading
             fontSize="5xl"
             fontWeight="bold"
             color="brand.500"
             lineHeight="50px"
             mb="30px"
-            maxW="270"
+            letterSpacing="0"
+            maxW="300"
           >
             Catálogo de maquinarías
-          </Text>
+          </Heading>
           <Text fontSize="2xl" mb="10px" maxW="550">
             Encontrá la maquinaría que búscas y recibí asesoramiento online
             personalizado.
@@ -62,16 +71,17 @@ export default function Home() {
                 top={{ base: '20px', md: '50px' }}
                 left={{ base: '20px', md: '50px' }}
               >
-                <Text
+                <Heading
                   fontSize="5xl"
                   fontWeight="bold"
                   color="white"
                   lineHeight="45px"
                   mb="30px"
-                  maxW="270"
+                  letterSpacing="0"
+                  maxW="300"
                 >
                   Maquinarias usadas
-                </Text>
+                </Heading>
                 <Button
                   size="lg"
                   bg="white"
@@ -101,16 +111,17 @@ export default function Home() {
                 top={{ base: '20px', md: '50px' }}
                 left={{ base: '20px', md: '50px' }}
               >
-                <Text
+                <Heading
                   fontSize="5xl"
                   fontWeight="bold"
                   color="white"
                   lineHeight="45px"
+                  letterSpacing="0"
                   mb="30px"
-                  maxW="270"
+                  maxW="300"
                 >
                   Maquinarias nuevas
-                </Text>
+                </Heading>
                 <Button
                   size="lg"
                   bg="white"

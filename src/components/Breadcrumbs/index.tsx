@@ -44,7 +44,7 @@ const BreadcrumbComp = () => {
       borderBottomColor="gray.200"
       marginBottom="50px"
     >
-      <Container p="15px 0">
+      <Container pt="15px" pb="15px">
         <Breadcrumb>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Casa Viano</BreadcrumbLink>

@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, SimpleGrid, Heading } from '@chakra-ui/react'
 import * as React from 'react'
 import { Testimonial } from './Testimonial'
 
@@ -10,7 +10,7 @@ const Testimonials = () => {
         mx="auto"
         px={{ base: '6', md: '8' }}
       >
-        <Text
+        <Heading
           fontSize="5xl"
           fontWeight="bold"
           color="brand.500"
@@ -18,7 +18,7 @@ const Testimonials = () => {
           mb="10px"
         >
           Testimonios
-        </Text>
+        </Heading>
         <SimpleGrid
           py="16"
           columns={{ base: 1, lg: 2 }}

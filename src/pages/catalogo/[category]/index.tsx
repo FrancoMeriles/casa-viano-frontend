@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 
-import { Container, Text, SimpleGrid } from '@chakra-ui/react'
+import { Container, Text, SimpleGrid, Heading } from '@chakra-ui/react'
 
 import Header from '@components/Header'
 import Footer from '@components/Footer'
@@ -40,14 +40,15 @@ const Category = ({ category }: CategoryType) => {
           <Text fontSize="1xl" letterSpacing="2px" color="gray" mb="10px">
             CATÁLOGO
           </Text>
-          <Text
+          <Heading
             fontSize="5xl"
             color="brand.500"
             fontWeight="bold"
             lineHeight="50px"
+            letterSpacing="0"
           >
             {title}
-          </Text>
+          </Heading>
           <SimpleGrid
             mt="60px"
             spacing={4}

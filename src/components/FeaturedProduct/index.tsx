@@ -2,19 +2,18 @@ import React from 'react'
 import {
   Box,
   Container,
-  Text,
   Button,
   Flex,
   Spacer,
-  Card,
-  CardBody,
-  Image,
   Heading,
-  CardFooter,
   SimpleGrid,
 } from '@chakra-ui/react'
+import Card from '@components/Card'
+import { useRouter } from 'next/router'
 
 const FeaturedProduct = () => {
+  const router = useRouter()
+
   return (
     <Box p="70px 0">
       <Container>
@@ -27,7 +26,7 @@ const FeaturedProduct = () => {
           gap="2"
           mb="60px"
         >
-          <Text
+          <Heading
             fontSize="5xl"
             fontWeight="bold"
             color="brand.500"
@@ -36,7 +35,7 @@ const FeaturedProduct = () => {
             maxW="270"
           >
             Productos destacados
-          </Text>
+          </Heading>
           <Spacer />
           <Button
             size="lg"
@@ -46,7 +45,9 @@ const FeaturedProduct = () => {
               bg: 'white',
               color: 'brand.500',
             }}
-            onClick={() => console.log('se clickeo btn 1')}
+            onClick={() => {
+              router.push(`/catalogo`)
+            }}
           >
             Ver todos
           </Button>
@@ -55,154 +56,10 @@ const FeaturedProduct = () => {
           spacing={4}
           templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
         >
-          <Card>
-            <Image
-              src="https://dummyimage.com/279x214/e0e0e0/7d7d7d"
-              alt="Green double couch with wooden legs"
-              borderRadius="sm"
-            />
-            <CardBody>
-              <Heading size="xs" noOfLines={2}>
-                Nombre de la maquinaría hasta 2 líneas y elipsis...
-              </Heading>
-            </CardBody>
-            <CardFooter display="flex" flexDirection="column">
-              <Button
-                mb="1 0px"
-                variant="solid"
-                width="100%"
-                colorScheme="brand"
-                color="white"
-                size="lg"
-                _hover={{
-                  bg: 'white',
-                  color: 'brand.500',
-                }}
-                borderRadius="50px"
-              >
-                Consultar ahora
-              </Button>
-              <Button
-                size="lg"
-                width="100%"
-                variant="ghost"
-                colorScheme="brand"
-              >
-                Ver detalle
-              </Button>
-            </CardFooter>
-          </Card>
-          <Card>
-            <Image
-              src="https://dummyimage.com/279x214/e0e0e0/7d7d7d"
-              alt="Green double couch with wooden legs"
-              borderRadius="sm"
-            />
-            <CardBody>
-              <Heading size="xs" noOfLines={2}>
-                Nombre de la maquinaría hasta 2 líneas y elipsis...
-              </Heading>
-            </CardBody>
-            <CardFooter display="flex" flexDirection="column">
-              <Button
-                mb="1 0px"
-                variant="solid"
-                width="100%"
-                colorScheme="brand"
-                color="white"
-                size="lg"
-                _hover={{
-                  bg: 'white',
-                  color: 'brand.500',
-                }}
-                borderRadius="50px"
-              >
-                Consultar ahora
-              </Button>
-              <Button
-                size="lg"
-                width="100%"
-                variant="ghost"
-                colorScheme="brand"
-              >
-                Ver detalle
-              </Button>
-            </CardFooter>
-          </Card>
-          <Card>
-            <Image
-              src="https://dummyimage.com/279x214/e0e0e0/7d7d7d"
-              alt="Green double couch with wooden legs"
-              borderRadius="sm"
-            />
-            <CardBody>
-              <Heading size="xs" noOfLines={2}>
-                Nombre de la maquinaría hasta 2 líneas y elipsis...
-              </Heading>
-            </CardBody>
-            <CardFooter display="flex" flexDirection="column">
-              <Button
-                mb="1 0px"
-                variant="solid"
-                width="100%"
-                colorScheme="brand"
-                color="white"
-                size="lg"
-                _hover={{
-                  bg: 'white',
-                  color: 'brand.500',
-                }}
-                borderRadius="50px"
-              >
-                Consultar ahora
-              </Button>
-              <Button
-                size="lg"
-                width="100%"
-                variant="ghost"
-                colorScheme="brand"
-              >
-                Ver detalle
-              </Button>
-            </CardFooter>
-          </Card>
-          <Card>
-            <Image
-              src="https://dummyimage.com/279x214/e0e0e0/7d7d7d"
-              alt="Green double couch with wooden legs"
-              borderRadius="sm"
-            />
-            <CardBody>
-              <Heading size="xs" noOfLines={2}>
-                Nombre de la maquinaría hasta 2 líneas y elipsis...
-              </Heading>
-            </CardBody>
-            <CardFooter display="flex" flexDirection="column">
-              <Button
-                mb="1 0px"
-                variant="solid"
-                width="100%"
-                colorScheme="brand"
-                color="white"
-                size="lg"
-                _hover={{
-                  bg: 'white',
-                  color: 'brand.500',
-                }}
-                borderRadius="50px"
-              >
-                Consultar ahora
-              </Button>
-              <Button
-                size="lg"
-                width="100%"
-                variant="ghost"
-                colorScheme="brand"
-              >
-                Ver detalle
-              </Button>
-            </CardFooter>
-          </Card>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </SimpleGrid>
       </Container>
     </Box>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Text, Flex, Box } from '@chakra-ui/react'
+import { Container, Text, Flex, Box, Heading } from '@chakra-ui/react'
 import CountUp from 'react-countup'
 
 const Counters = () => {
@@ -25,9 +25,9 @@ const Counters = () => {
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
               <CountUp end={4} separator="." enableScrollSpy />
             </Text>
-            <Text ml="4" fontSize="2xl" fontWeight="bold" color="white">
+            <Heading ml="4" fontSize="2xl" fontWeight="bold" color="white">
               Generaciones
-            </Text>
+            </Heading>
           </Flex>
           <Flex
             wrap="wrap"
@@ -38,9 +38,9 @@ const Counters = () => {
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
               <CountUp end={112} separator="." enableScrollSpy />
             </Text>
-            <Text ml="4" fontSize="2xl" fontWeight="bold" color="white">
+            <Heading ml="4" fontSize="2xl" fontWeight="bold" color="white">
               Años de trayectoria
-            </Text>
+            </Heading>
           </Flex>
           <Flex
             wrap="wrap"
@@ -51,9 +51,9 @@ const Counters = () => {
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
               <CountUp prefix="+" end={10000} separator="." enableScrollSpy />
             </Text>
-            <Text ml="4" fontSize="2xl" fontWeight="bold" color="white">
+            <Heading ml="4" fontSize="2xl" fontWeight="bold" color="white">
               Maquinarias vendidas
-            </Text>
+            </Heading>
           </Flex>
         </Flex>
       </Container>

@@ -982,6 +982,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.14.tgz#3944b809aa7bf27dacd20bdc04a49fb738959724"
   integrity sha512-JDC9AocdPLuGsASkvWw9hS5gtHE7K9dOwL98XLrk5yjYqxy4uVnScG58NUvFMJDVJRl/7c8Wnap6PEs+7Zvj1Q==
 
+"@fontsource/outfit@^4.5.10":
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@fontsource/outfit/-/outfit-4.5.10.tgz#516a33189b5effe4fd3ead08fb871eebbe238580"
+  integrity sha512-wT8hmcueW5okOS8BQGARL0zdJOe032FctWr9df/0ixXpAiZ4WfnigRd3/ThhmmRwFgNxbjwqZ9bmO+5QDjaTbA==
+
 "@fontsource/roboto@^4.5.8":
   version "4.5.8"
   resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.5.8.tgz#56347764786079838faf43f0eeda22dd7328437f"
