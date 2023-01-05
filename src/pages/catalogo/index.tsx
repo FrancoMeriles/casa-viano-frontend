@@ -29,7 +29,7 @@ export default function Home() {
       <Header />
       <Breadcrumb />
       <main>
-        <Container>
+        <Container mt="50px">
           <Heading
             fontSize="5xl"
             fontWeight="bold"

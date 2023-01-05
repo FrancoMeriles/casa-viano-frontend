@@ -19,7 +19,11 @@
     // Using "paths" allows you to configure module path aliases
     "paths": {
       "@components/*": ["src/components/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@customTypes/*": ["src/types/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

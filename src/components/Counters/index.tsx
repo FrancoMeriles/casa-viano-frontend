@@ -38,7 +38,14 @@ const Counters = () => {
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
               <CountUp end={112} separator="." enableScrollSpy />
             </Text>
-            <Heading ml="4" fontSize="2xl" fontWeight="bold" color="white">
+            <Heading
+              ml="4"
+              fontSize="2xl"
+              fontWeight="bold"
+              color="white"
+              maxW="140"
+              lineHeight="30px"
+            >
               Años de trayectoria
             </Heading>
           </Flex>
@@ -51,7 +58,14 @@ const Counters = () => {
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
               <CountUp prefix="+" end={10000} separator="." enableScrollSpy />
             </Text>
-            <Heading ml="4" fontSize="2xl" fontWeight="bold" color="white">
+            <Heading
+              ml="4"
+              fontSize="2xl"
+              fontWeight="bold"
+              color="white"
+              maxW="150"
+              lineHeight="30px"
+            >
               Maquinarias vendidas
             </Heading>
           </Flex>

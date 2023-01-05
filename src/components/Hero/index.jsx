@@ -22,7 +22,7 @@ const Hero = () => {
   return (
     <Box position="relative" pb="80px">
       <Box
-        bg="brand.100"
+        bg="brand.500"
         position="absolute"
         bottom="0"
         height={{

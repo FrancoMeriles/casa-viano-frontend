@@ -7,6 +7,7 @@ import {
   Box,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { capitalizeName } from '@utils/index'
 
 interface Links {
   name: string
@@ -16,17 +17,16 @@ interface Links {
 
 const BreadcrumbComp = () => {
   const [links, setLinks] = React.useState<Links[]>([])
-  const { asPath } = useRouter()
+  const { asPath, push } = useRouter()
   React.useEffect(() => {
     const paths = asPath.split('/').slice(1)
     let linkRoutes = ''
     const routes = paths.map((path, i) => {
       const hasQuery = path.includes('?')
       const name = hasQuery ? path.split('?')[0] : path
-      const capitalizeName = `${name[0].toUpperCase()}${name.substring(1)}`
       linkRoutes += `/${path}`
       return {
-        name: capitalizeName,
+        name: capitalizeName(name),
         link: linkRoutes,
         isCurrentPage: i + 1 === paths.length,
       }
@@ -42,12 +42,13 @@ const BreadcrumbComp = () => {
       borderBottom="solid"
       borderBottomWidth="1px"
       borderBottomColor="gray.200"
-      marginBottom="50px"
     >
       <Container pt="15px" pb="15px">
         <Breadcrumb>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">Casa Viano</BreadcrumbLink>
+            <BreadcrumbLink onClick={() => push('/')}>
+              Casa Viano
+            </BreadcrumbLink>
           </BreadcrumbItem>
 
           {links.length > 0

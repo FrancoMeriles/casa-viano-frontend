@@ -1,8 +1,9 @@
-import React from 'react'
+import { useRouter } from 'next/router'
 import { Container, Text, Image, Box, Button } from '@chakra-ui/react'
 import { FaAngleRight } from 'react-icons/fa'
 
 export default function FeaturedCategory() {
+  const { push } = useRouter()
   return (
     <Container position="relative" mt="80px" mb="80px">
       <Image src="/img/featured_category.png" alt="Featured Category" />
@@ -35,7 +36,7 @@ export default function FeaturedCategory() {
             color: 'brand.100',
           }}
           rightIcon={<FaAngleRight />}
-          onClick={() => console.log('se clickeo btn 1')}
+          onClick={() => push('/catalogo')}
         >
           Ver catálogo
         </Button>

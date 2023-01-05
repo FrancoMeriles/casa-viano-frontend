@@ -6,6 +6,9 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/700.css'
 import '@fontsource/outfit/700.css'
 
+/* Contexts */
+import LoaderProvider from '@contexts/LoaderProvider'
+
 /* Chakra UI */
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { theme as proTheme } from '@chakra-ui/pro-theme'
@@ -17,7 +20,6 @@ export const theme = extendTheme(
       brand: {
         100: '#040419',
         500: '#000054',
-        600: '#040419',
       },
     },
     fonts: {
@@ -31,7 +33,9 @@ export const theme = extendTheme(
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <LoaderProvider>
+        <Component {...pageProps} />
+      </LoaderProvider>
     </ChakraProvider>
   )
 }

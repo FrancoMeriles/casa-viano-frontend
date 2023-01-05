@@ -36,7 +36,7 @@ const Category = ({ category }: CategoryType) => {
       <Header />
       <Breadcrumb />
       <main>
-        <Container>
+        <Container mt="50px">
           <Text fontSize="1xl" letterSpacing="2px" color="gray" mb="10px">
             CATÁLOGO
           </Text>

@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import {
   Box,
   Container,
@@ -8,12 +8,18 @@ import {
   Heading,
   SimpleGrid,
 } from '@chakra-ui/react'
+import { ProductsInterface } from '@customTypes/products'
 import Card from '@components/Card'
 import { useRouter } from 'next/router'
 
-const FeaturedProduct = () => {
-  const router = useRouter()
+interface ProductsProps {
+  products: ProductsInterface[]
+}
 
+const FeaturedProduct: FC<ProductsProps> = ({ products }) => {
+  const router = useRouter()
+  // console.log('produ')
+  console.log(products)
   return (
     <Box p="70px 0">
       <Container>
