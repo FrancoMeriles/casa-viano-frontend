@@ -9,23 +9,32 @@ import FeaturedCategory from '@components/FeaturedCategory'
 
 import Breadcrumb from '@components/Breadcrumbs'
 import Card from '@components/Card'
+import axios from '@services/local'
 
-import { capitalizeName } from '@utils/index'
+import { translateCategory } from '@utils/index'
 
-interface CategoryType {
+import { ProductsInterface } from '@customTypes/products'
+interface Props {
   category: string
+  products: ProductsInterface[]
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { data } = await axios.get(
+    `/products?condition=${context.query.category}`
+  )
   return {
     props: {
+      products: data.products,
       category: context.query.category,
     },
   }
 }
 
-const Category = ({ category }: CategoryType) => {
-  const title = `Maquinaria ${capitalizeName(category)}`
+const Category = ({ category, products }: Props) => {
+  console.log('llego final')
+  console.log(products)
+  const title = `Maquinaria ${translateCategory(category)}`
   return (
     <div>
       <Head>
@@ -54,16 +63,9 @@ const Category = ({ category }: CategoryType) => {
             spacing={4}
             templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
           >
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {products.map((product) => (
+              <Card key={product._id} product={product} />
+            ))}
           </SimpleGrid>
           <FeaturedCategory />
         </Container>

@@ -1,7 +1,22 @@
+type AttributesType = {
+  key: string
+  value: string
+}
+
+type ImagesType = {
+  principal: boolean
+  path: string
+}
+
 export interface ProductsInterface {
-  id: string
-  title: string
-  thumbnail: string
-  price: number
-  original_price?: number
+  _id: string
+  slug: string
+  name: string
+  description: number
+  body: number
+  is_available: boolean
+  condition: string
+  featured: boolean
+  attributes: AttributesType[]
+  images: ImagesType[]
 }

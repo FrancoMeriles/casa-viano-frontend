@@ -19,7 +19,11 @@ import {
   CarouselSlide,
   useCarousel,
 } from './Carousel'
-import { ProductImage } from './_data'
+
+type ProductImage = {
+  principal: boolean
+  path: string
+}
 
 interface GalleryProps {
   images: ProductImage[]
@@ -31,7 +35,8 @@ export const Gallery = (props: GalleryProps) => {
   const { images, aspectRatio = 4 / 3, rootProps } = props
   const [index, setIndex] = React.useState(0)
   const [currentSlide, setCurrentSlide] = React.useState(0)
-
+  console.log('finalll')
+  console.log(images)
   const slidesPerView = useBreakpointValue({ base: 3, md: 4 })
   const isVertical = useBreakpointValue({ base: false, md: true })
 
@@ -77,9 +82,9 @@ export const Gallery = (props: GalleryProps) => {
                 _hover={{ opacity: 1 }}
               >
                 <Image
-                  src={image.src}
+                  src={image.path}
                   objectFit="cover"
-                  alt={image.alt}
+                  alt={'Alt'}
                   fallback={<Skeleton />}
                 />
               </AspectRatio>
@@ -98,9 +103,9 @@ export const Gallery = (props: GalleryProps) => {
       </Stack>
       <AspectRatio ratio={aspectRatio} flex="1">
         <Image
-          src={images[index].src}
+          src={images[index].path}
           objectFit="cover"
-          alt={images[index].alt}
+          alt={'Alt'}
           fallback={<Skeleton />}
         />
       </AspectRatio>

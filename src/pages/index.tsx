@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 
@@ -10,14 +11,22 @@ import FeaturedCategory from '@components/FeaturedCategory'
 import Brands from '@components/Brands'
 import Counters from '@components/Counters'
 import Whatsapp from '@components/Whatsapp'
+import axios from '@services/local'
+
+import { ProductsInterface } from '@customTypes/products'
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await axios.get('/products/featured')
   return {
-    props: {},
+    props: { products: data.products },
   }
 }
 
-const Home = () => {
+interface Props {
+  products: ProductsInterface[]
+}
+
+const Home: FC<Props> = ({ products }) => {
   return (
     <>
       <Head>
@@ -28,7 +37,7 @@ const Home = () => {
       <Header />
       <main>
         <Hero />
-        <FeaturedProduct products={[]} />
+        <FeaturedProduct products={products} />
         <Counters />
         <Brands />
         <FeaturedCategory />

@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import { useRouter } from 'next/router'
 
 import {
@@ -10,20 +10,31 @@ import {
   CardFooter,
 } from '@chakra-ui/react'
 
-const CardComp = () => {
-  const router = useRouter()
-  const category = router.query.category
+import { ProductsInterface } from '@customTypes/products'
 
+interface Props {
+  product: ProductsInterface
+}
+
+const CardComp: FC<Props> = ({ product }) => {
+  const { images, name, condition, slug } = product
+  const principalImage = images.find((image) => image.principal)
+  const router = useRouter()
+  let category = router.query.category
+  if (!category) {
+    category = condition === 'new' ? 'Nuevo' : 'Usado'
+  }
+  console.log(category)
   return (
     <Card>
       <Image
-        src="https://dummyimage.com/279x214/e0e0e0/7d7d7d"
+        src={principalImage?.path}
         alt="Green double couch with wooden legs"
         borderRadius="sm"
       />
       <CardBody>
         <Heading size="xs" noOfLines={2}>
-          Nombre de la maquinaría hasta 2 líneas y elipsis...
+          {name}
         </Heading>
       </CardBody>
       <CardFooter display="flex" flexDirection="column">
@@ -44,7 +55,7 @@ const CardComp = () => {
         </Button>
         <Button
           onClick={() =>
-            router.push(`/catalogo/${category}/producto?slug=some-slug`)
+            router.push(`/catalogo/${category}/producto?slug=${slug}`)
           }
           size="lg"
           width="100%"

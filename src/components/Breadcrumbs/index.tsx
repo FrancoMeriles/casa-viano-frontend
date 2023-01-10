@@ -7,7 +7,7 @@ import {
   Box,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { capitalizeName } from '@utils/index'
+import { capitalizeName, translateCategory } from '@utils/index'
 
 interface Links {
   name: string
@@ -25,8 +25,12 @@ const BreadcrumbComp = () => {
       const hasQuery = path.includes('?')
       const name = hasQuery ? path.split('?')[0] : path
       linkRoutes += `/${path}`
+      let finalName = capitalizeName(name)
+      if (name === 'used' || name === 'new') {
+        finalName = translateCategory(name)
+      }
       return {
-        name: capitalizeName(name),
+        name: finalName,
         link: linkRoutes,
         isCurrentPage: i + 1 === paths.length,
       }

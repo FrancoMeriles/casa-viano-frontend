@@ -7,7 +7,7 @@ import {
   IconButtonProps,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { KeenSliderOptions, useKeenSlider } from 'keen-slider/react' // using version 6.6.10
+import { KeenSliderOptions, useKeenSlider } from 'keen-slider/react'
 import * as React from 'react'
 
 export const Carousel = React.forwardRef<HTMLDivElement, FlexProps>(

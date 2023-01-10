@@ -18,26 +18,32 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 import Breadcrumb from '@components/Breadcrumbs'
 
-import { images } from '@components/Gallery/_data'
+import axios from '@services/local'
+
 import { Gallery } from '@components/Gallery/Gallery'
+import { ProductsInterface } from '@customTypes/products'
+import { translateCategory } from '@utils/index'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { slug } = context.query
+  const { data } = await axios.get(`/products/slug/${slug}`)
+  console.log(data)
   return {
     props: {
       category: context.query.category,
-      slug: context.query.slug,
+      slug,
+      product: data.product,
     },
   }
 }
 
-interface Product {
+interface Props {
   category: string
   slug: string
+  product: ProductsInterface
 }
 
-const Product = ({ category, slug }: Product) => {
-  console.log(category)
-  console.log(slug)
+const Product = ({ category, product }: Props) => {
   return (
     <div>
       <Head>
@@ -58,51 +64,38 @@ const Product = ({ category, slug }: Product) => {
             mb="20px"
           >
             <Box>
-              <Gallery images={images} />
+              <Gallery images={product.images} />
               <Box mt="50px">
                 <Heading fontSize="2xl" color="brand.500" fontWeight="bold">
                   Descripción
                 </Heading>
                 <Divider m="15px 0" />
                 <Text p="16px" fontSize="1xl" lineHeight="30px" color="black">
-                  Capacidad: 13m3. Chasis: compacto, ensamblado en bloque con la
-                  carrocería. Ejes: cuadrados, de 3” con rodillos cónicos. Tren
-                  Delantero: con aro giratorio a bolillas Suspensión: con
-                  elásticos reforzados de 63 mm. Autocarga y Descarga: con
-                  amando a través de un motor hidráulico con multiplicador de
-                  velocidad. Diámetro del tubo 150 mm. Sistema de Descarga al
-                  Sinfín: por gravedad, mediante de las boquillas inferiores con
-                  apertura y cierre por medio de palancas.
+                  {product.body}
                 </Text>
                 <Heading fontSize="2xl" color="brand.500" fontWeight="bold">
                   Detalles técnicos
                 </Heading>
                 <Divider m="15px 0" />
-
-                <Flex pt="20px" pb="10px" borderBottom="solid 1px #D0D0D0">
-                  <Text fontSize="1xl" color="black" flex="1">
-                    Campo 1
-                  </Text>
-                  <Text fontSize="1xl" color="black" flex="4">
-                    Descripción
-                  </Text>
-                </Flex>
-                <Flex pt="20px" pb="10px" borderBottom="solid 1px #D0D0D0">
-                  <Text fontSize="1xl" color="black" flex="1">
-                    Campo 1
-                  </Text>
-                  <Text fontSize="1xl" color="black" flex="4">
-                    Descripción
-                  </Text>
-                </Flex>
-                <Flex pt="20px" pb="10px" borderBottom="solid 1px #D0D0D0">
-                  <Text fontSize="1xl" color="black" flex="1">
-                    Campo 1
-                  </Text>
-                  <Text fontSize="1xl" color="black" flex="4">
-                    Descripción
-                  </Text>
-                </Flex>
+                {product.attributes.map((attribute, i) => {
+                  return (
+                    <Flex
+                      key={i}
+                      pt="20px"
+                      pb="10px"
+                      borderBottom="solid"
+                      borderBottomWidth="1px"
+                      borderBottomColor="gray.300"
+                    >
+                      <Text fontSize="1xl" color="black" flex="1">
+                        {attribute.key}
+                      </Text>
+                      <Text fontSize="1xl" color="black" flex="4">
+                        {attribute.value}
+                      </Text>
+                    </Flex>
+                  )
+                })}
               </Box>
             </Box>
             <Box
@@ -122,17 +115,29 @@ const Product = ({ category, slug }: Product) => {
               <Box position="sticky" top="110px" bottom="40px">
                 <Flex align="center">
                   <Text fontSize="1xl" letterSpacing="2px" color="brand.500">
-                    {category.toUpperCase()}
+                    {translateCategory(category)}
                   </Text>
-                  <Badge
-                    fontWeight="bold"
-                    bg="green.200"
-                    p="2px 20px"
-                    ml="10px"
-                    fontSize="0.7em"
-                  >
-                    DISPONIBLE
-                  </Badge>
+                  {product.is_available ? (
+                    <Badge
+                      fontWeight="bold"
+                      bg="green.200"
+                      p="2px 20px"
+                      ml="10px"
+                      fontSize="0.7em"
+                    >
+                      DISPONIBLE
+                    </Badge>
+                  ) : (
+                    <Badge
+                      fontWeight="bold"
+                      bg="red.200"
+                      p="2px 20px"
+                      ml="10px"
+                      fontSize="0.7em"
+                    >
+                      NO DISPONIBLE
+                    </Badge>
+                  )}
                 </Flex>
                 <Heading
                   fontSize="4xl"
@@ -142,12 +147,10 @@ const Product = ({ category, slug }: Product) => {
                   letterSpacing="0"
                   mt="30px"
                 >
-                  Nombre de producto extenso de tres líneas de texto
+                  {product.name}
                 </Heading>
                 <Text fontSize="2xl" mt="20px">
-                  Descripción resumida del producto que contempla hasta cuatro
-                  líneas de texto. Para más detalle incluirlos en los campos de
-                  descripción detallada.
+                  {product.description}
                 </Text>
                 <Button
                   mt="30px"
@@ -162,14 +165,6 @@ const Product = ({ category, slug }: Product) => {
               </Box>
             </Box>
           </SimpleGrid>
-          {/* <Box
-              maxW="3xl"
-              mx="auto"
-              px={{ base: '4', md: '8', lg: '12' }}
-              py={{ base: '6', md: '8', lg: '12' }}
-            >
-              <Gallery images={images} />
-            </Box> */}
         </Container>
       </main>
       <Footer />

@@ -18,8 +18,6 @@ interface ProductsProps {
 
 const FeaturedProduct: FC<ProductsProps> = ({ products }) => {
   const router = useRouter()
-  // console.log('produ')
-  console.log(products)
   return (
     <Box p="70px 0">
       <Container>
@@ -62,10 +60,9 @@ const FeaturedProduct: FC<ProductsProps> = ({ products }) => {
           spacing={4}
           templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
         >
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {products.map((product) => (
+            <Card key={product._id} product={product} />
+          ))}
         </SimpleGrid>
       </Container>
     </Box>

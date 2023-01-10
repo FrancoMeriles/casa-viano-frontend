@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react'
 
 export default function EmpresaContent() {
-  console.log('test')
   return (
     <Grid templateColumns="repeat(7, 1fr)">
       <GridItem colSpan={4} p="70px">

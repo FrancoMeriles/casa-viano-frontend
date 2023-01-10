@@ -88,7 +88,7 @@ export default function Home() {
                   color="brand.500"
                   borderRadius="50px"
                   p="20px 30px"
-                  onClick={() => router.push('/catalogo/usadas')}
+                  onClick={() => router.push('/catalogo/used')}
                 >
                   Ver maquinas
                 </Button>
@@ -128,7 +128,7 @@ export default function Home() {
                   color="brand.500"
                   borderRadius="50px"
                   p="20px 30px"
-                  onClick={() => router.push('/catalogo/nuevas')}
+                  onClick={() => router.push('/catalogo/new')}
                 >
                   Ver maquinas
                 </Button>
