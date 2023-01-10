@@ -35,8 +35,6 @@ export const Gallery = (props: GalleryProps) => {
   const { images, aspectRatio = 4 / 3, rootProps } = props
   const [index, setIndex] = React.useState(0)
   const [currentSlide, setCurrentSlide] = React.useState(0)
-  console.log('finalll')
-  console.log(images)
   const slidesPerView = useBreakpointValue({ base: 3, md: 4 })
   const isVertical = useBreakpointValue({ base: false, md: true })
 

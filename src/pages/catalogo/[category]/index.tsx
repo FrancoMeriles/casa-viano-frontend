@@ -11,7 +11,7 @@ import Breadcrumb from '@components/Breadcrumbs'
 import Card from '@components/Card'
 import axios from '@services/local'
 
-import { translateCategory } from '@utils/index'
+import { getErrorUrl, translateCategory } from '@utils/index'
 
 import { ProductsInterface } from '@customTypes/products'
 interface Props {
@@ -20,9 +20,20 @@ interface Props {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { data } = await axios.get(
-    `/products?condition=${context.query.category}`
-  )
+  let data
+  try {
+    const response = await axios.get(
+      `/products?condition=${context.query.category}`
+    )
+    data = response.data
+  } catch (err) {
+    return {
+      redirect: {
+        destination: getErrorUrl(err),
+      },
+      props: {},
+    }
+  }
   return {
     props: {
       products: data.products,
@@ -32,8 +43,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const Category = ({ category, products }: Props) => {
-  console.log('llego final')
-  console.log(products)
   const title = `Maquinaria ${translateCategory(category)}`
   return (
     <div>
@@ -67,8 +76,8 @@ const Category = ({ category, products }: Props) => {
               <Card key={product._id} product={product} />
             ))}
           </SimpleGrid>
-          <FeaturedCategory />
         </Container>
+        <FeaturedCategory />
       </main>
       <Footer />
     </div>

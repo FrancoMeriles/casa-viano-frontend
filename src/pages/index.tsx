@@ -12,11 +12,24 @@ import Brands from '@components/Brands'
 import Counters from '@components/Counters'
 import Whatsapp from '@components/Whatsapp'
 import axios from '@services/local'
+import { getErrorUrl } from '@utils/index'
 
 import { ProductsInterface } from '@customTypes/products'
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await axios.get('/products/featured')
+  let data
+  try {
+    const response = await axios.get('/products/featured')
+    data = response.data
+  } catch (err) {
+    return {
+      redirect: {
+        destination: getErrorUrl(err),
+      },
+      props: {},
+    }
+  }
+
   return {
     props: { products: data.products },
   }

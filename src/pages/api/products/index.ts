@@ -10,7 +10,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log(req.query)
   const response = await service.get(
     `/products?condition=${req.query.condition}`
   )

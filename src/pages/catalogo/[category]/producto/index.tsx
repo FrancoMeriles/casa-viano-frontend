@@ -22,12 +22,22 @@ import axios from '@services/local'
 
 import { Gallery } from '@components/Gallery/Gallery'
 import { ProductsInterface } from '@customTypes/products'
-import { translateCategory } from '@utils/index'
+import { getErrorUrl, translateCategory } from '@utils/index'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { slug } = context.query
-  const { data } = await axios.get(`/products/slug/${slug}`)
-  console.log(data)
+  let data
+  try {
+    const response = await axios.get(`/products/slug/${slug}`)
+    data = response.data
+  } catch (err) {
+    return {
+      redirect: {
+        destination: getErrorUrl(err),
+      },
+      props: {},
+    }
+  }
   return {
     props: {
       category: context.query.category,

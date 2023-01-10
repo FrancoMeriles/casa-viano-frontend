@@ -24,7 +24,6 @@ const CardComp: FC<Props> = ({ product }) => {
   if (!category) {
     category = condition === 'new' ? 'Nuevo' : 'Usado'
   }
-  console.log(category)
   return (
     <Card>
       <Image
@@ -43,12 +42,7 @@ const CardComp: FC<Props> = ({ product }) => {
           variant="solid"
           width="100%"
           colorScheme="brand"
-          color="white"
           size="lg"
-          _hover={{
-            bg: 'white',
-            color: 'brand.500',
-          }}
           borderRadius="50px"
         >
           Consultar ahora
@@ -61,6 +55,7 @@ const CardComp: FC<Props> = ({ product }) => {
           width="100%"
           variant="ghost"
           colorScheme="brand"
+          mt="10px"
         >
           Ver detalle
         </Button>

@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
-import { Text, Image, Box, Button } from '@chakra-ui/react'
+import { Text, Image, Box, Button, Container } from '@chakra-ui/react'
 import { FaAngleRight } from 'react-icons/fa'
 
 export default function FeaturedCategory() {
   const { push } = useRouter()
   return (
-    <Box position="relative" mt="80px" mb="80px">
+    <Container position="relative" mt="80px" mb="80px">
       <Image src="/img/featured_category.png" alt="Featured Category" />
       <Box
         padding="30px 50px 30px 30px"
@@ -41,6 +41,6 @@ export default function FeaturedCategory() {
           Ver catálogo
         </Button>
       </Box>
-    </Box>
+    </Container>
   )
 }

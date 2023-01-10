@@ -61,7 +61,7 @@ const BreadcrumbComp = () => {
                   isCurrentPage={link.isCurrentPage}
                   key={link.name}
                 >
-                  <BreadcrumbLink href={link.link}>
+                  <BreadcrumbLink onClick={() => push(link.link)}>
                     {link.name === 'Catalogo' ? 'Catálogo' : link.name}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
