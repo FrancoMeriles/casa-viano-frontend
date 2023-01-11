@@ -12,7 +12,16 @@ import {
 export default function EmpresaContent() {
   return (
     <Grid templateColumns="repeat(7, 1fr)">
-      <GridItem colSpan={4} p="70px">
+      <GridItem
+        colSpan={{
+          base: 7,
+          lg: 4,
+        }}
+        p={{
+          base: '30px',
+          lg: '70px',
+        }}
+      >
         <Text fontSize="xl" mb="30px" lineHeight="40px">
           En <Box as="strong">1910 Don Andrés Martín Viano</Box> inaugura una
           pequeña Ferretería en el local de calle Italia 1674, construida por él
@@ -55,8 +64,19 @@ export default function EmpresaContent() {
           <Box as="strong"> CASA VIANO.</Box>
         </Text>
       </GridItem>
-      <GridItem colSpan={3} bg="brand.500">
-        <Box p="70px">
+      <GridItem
+        colSpan={{
+          base: 7,
+          lg: 3,
+        }}
+        bg="brand.500"
+      >
+        <Box
+          p={{
+            base: '30px',
+            lg: '70px',
+          }}
+        >
           <Flex alignItems="center" p="20px" mb="20px">
             <Text fontSize="6xl" fontWeight="bold" color="white">
               <CountUp end={112} separator="." enableScrollSpy />
@@ -72,7 +92,13 @@ export default function EmpresaContent() {
             </Heading>
           </Flex>
           <Divider />
-          <Flex alignItems="center" p="20px" mb="20px" mt="20px">
+          <Flex
+            alignItems="center"
+            p="20px"
+            mb="20px"
+            mt="20px"
+            flexWrap="wrap"
+          >
             <Text fontSize="6xl" fontWeight="bold" color="white">
               <CountUp prefix="+" end={10000} separator="." enableScrollSpy />
             </Text>
@@ -81,7 +107,7 @@ export default function EmpresaContent() {
               fontSize="2xl"
               color="white"
               lineHeight="30px"
-              maxW="180"
+              maxW="140"
             >
               Maquinarias vendidas
             </Heading>

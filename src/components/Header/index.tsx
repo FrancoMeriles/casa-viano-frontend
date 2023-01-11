@@ -33,6 +33,7 @@ const Header = () => {
       top="0"
       bg="white"
       zIndex="9"
+      boxShadow="sm"
     >
       <Container
         flexDirection="row"

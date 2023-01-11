@@ -51,7 +51,13 @@ const index: FC<Props> = ({ query }) => {
               Comparte esta informacion al equipo de IT
             </AlertDescription>
           </Alert>
-          <Box mt="20px" as="pre">
+          <Box
+            mt="20px"
+            as="pre"
+            wordBreak="break-word"
+            whiteSpace="pre-wrap"
+            maxWidth="900px"
+          >
             {JSON.stringify(query, null, 2)}
           </Box>
         </Box>

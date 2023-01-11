@@ -11,16 +11,27 @@ import FeaturedCategory from '@components/FeaturedCategory'
 import Brands from '@components/Brands'
 import Counters from '@components/Counters'
 import Whatsapp from '@components/Whatsapp'
-import axios from '@services/local'
+import axiosInstance from '@services/local'
+import axios from 'axios'
 import { getErrorUrl } from '@utils/index'
 
 import { ProductsInterface } from '@customTypes/products'
+import { TestimonialInterface } from '@customTypes/testimonials'
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  let data
+  let products
+  let testimonials
   try {
-    const response = await axios.get('/products/featured')
-    data = response.data
+    const requests = [
+      axiosInstance.get('/products/featured'),
+      axiosInstance.get('/testimonials'),
+    ]
+    const responses = await axios.all(requests)
+    const dataArray = responses.map((response) => response.data)
+    products = dataArray.filter((data) => Object.hasOwn(data, 'products'))
+    testimonials = dataArray.filter((data) =>
+      Object.hasOwn(data, 'testimonials')
+    )
   } catch (err) {
     return {
       redirect: {
@@ -31,15 +42,19 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 
   return {
-    props: { products: data.products },
+    props: {
+      products: products[0].products,
+      testimonials: testimonials[0].testimonials,
+    },
   }
 }
 
 interface Props {
   products: ProductsInterface[]
+  testimonials: TestimonialInterface[]
 }
 
-const Home: FC<Props> = ({ products }) => {
+const Home: FC<Props> = ({ products, testimonials }) => {
   return (
     <>
       <Head>
@@ -54,7 +69,7 @@ const Home: FC<Props> = ({ products }) => {
         <Counters />
         <Brands />
         <FeaturedCategory />
-        <Testimonials />
+        <Testimonials testimonials={testimonials} />
       </main>
       <Whatsapp />
       <Footer />
