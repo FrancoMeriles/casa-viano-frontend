@@ -18,7 +18,10 @@ interface Props {
 
 const CardComp: FC<Props> = ({ product }) => {
   const { images, name, condition, slug } = product
-  const principalImage = images.find((image) => image.principal)
+  let principalImage
+  if (images && images.length > 0) {
+    principalImage = images.find((image) => image.principal)
+  }
   const router = useRouter()
   let category = router.query.category
   if (!category) {
@@ -28,6 +31,7 @@ const CardComp: FC<Props> = ({ product }) => {
     <Card>
       <Image
         src={principalImage?.path}
+        fallbackSrc="/img/bg-empresa.png"
         alt="Green double couch with wooden legs"
         borderRadius="sm"
       />
