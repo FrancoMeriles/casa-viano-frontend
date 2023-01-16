@@ -9,8 +9,8 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  DrawerHeader,
   DrawerBody,
+  DrawerFooter,
   useDisclosure,
 } from '@chakra-ui/react'
 import { FaBars } from 'react-icons/fa'
@@ -142,9 +142,86 @@ const Header = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
-
-          <DrawerBody>Hola content</DrawerBody>
+          <DrawerBody display="flex" flexDirection="column" bg="brand.500">
+            <Link
+              mt="40px"
+              color="white"
+              fontWeight="bold"
+              fontSize="2xl"
+              position="relative"
+              onClick={() => {
+                push('/empresa')
+              }}
+            >
+              {isEmpresa && (
+                <Box
+                  w="8px"
+                  height="34px"
+                  bg="white"
+                  left="-24px"
+                  as="span"
+                  position="absolute"
+                  display="inline-block"
+                />
+              )}
+              Empresa
+            </Link>
+            <Link
+              mt="20px"
+              color="white"
+              fontWeight="bold"
+              fontSize="2xl"
+              position="relative"
+              onClick={() => {
+                push('/catalogo')
+              }}
+            >
+              {isCatalogo && (
+                <Box
+                  w="8px"
+                  height="34px"
+                  bg="white"
+                  left="-24px"
+                  as="span"
+                  position="absolute"
+                  display="inline-block"
+                />
+              )}
+              Catálogo
+            </Link>
+            <Link
+              mt="20px"
+              color="white"
+              fontWeight="bold"
+              fontSize="2xl"
+              position="relative"
+              onClick={() => {
+                push('/contacto')
+              }}
+            >
+              {isContacto && (
+                <Box
+                  w="8px"
+                  height="34px"
+                  bg="white"
+                  left="-24px"
+                  as="span"
+                  position="absolute"
+                  display="inline-block"
+                />
+              )}
+              Contacto
+            </Link>
+          </DrawerBody>
+          <DrawerFooter bg="brand.500">
+            <Image
+              onClick={() => push('/')}
+              margin="0 auto"
+              src="/casa-viano.svg"
+              alt="Casa Viano"
+              width="170px"
+            />
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </Box>

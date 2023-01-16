@@ -5,6 +5,7 @@ import { Container, Heading, Box, Image } from '@chakra-ui/react'
 
 const Brands = () => {
   const settings = {
+    arrows: false,
     dots: true,
     infinite: true,
     speed: 500,

@@ -46,8 +46,8 @@ export default function Home() {
             personalizado.
           </Text>
           <Flex
-            mt="70px"
-            mb="90px"
+            mt="60px"
+            mb="60px"
             direction={{
               base: 'column',
               md: 'row',

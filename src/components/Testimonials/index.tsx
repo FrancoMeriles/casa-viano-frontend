@@ -11,6 +11,7 @@ interface Props {
 
 const Testimonials: FC<Props> = ({ testimonials }) => {
   const settings = {
+    arrows: false,
     dots: true,
     infinite: true,
     speed: 500,
@@ -32,7 +33,7 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
     ],
   }
   return (
-    <Box as="section">
+    <Box as="section" mb="80px">
       <Box
         maxW={{ base: 'xl', md: '7xl' }}
         mx="auto"
@@ -52,23 +53,21 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
           columns={{ base: 1, lg: 2 }}
           spacing={{ base: '16', lg: '32' }}
         > */}
-        <Box pt="50px" pb="50px">
-          <Slider {...settings}>
-            {testimonials.length > 0
-              ? testimonials.map((testimonial) => (
-                  <Box key={testimonial._id}>
-                    <Testimonial
-                      name={testimonial.name}
-                      role={testimonial.occupation}
-                      image={testimonial?.image?.path}
-                    >
-                      {testimonial.comment}
-                    </Testimonial>
-                  </Box>
-                ))
-              : null}
-          </Slider>
-        </Box>
+        <Slider {...settings}>
+          {testimonials.length > 0
+            ? testimonials.map((testimonial) => (
+                <Box key={testimonial._id}>
+                  <Testimonial
+                    name={testimonial.name}
+                    role={testimonial.occupation}
+                    image={testimonial?.image?.path}
+                  >
+                    {testimonial.comment}
+                  </Testimonial>
+                </Box>
+              ))
+            : null}
+        </Slider>
         {/* </SimpleGrid> */}
       </Box>
     </Box>
