@@ -7,6 +7,8 @@ import {
   Spacer,
   Heading,
   SimpleGrid,
+  Show,
+  Hide,
 } from '@chakra-ui/react'
 import { ProductsInterface } from '@customTypes/products'
 import Card from '@components/Card'
@@ -41,8 +43,36 @@ const FeaturedProduct: FC<ProductsProps> = ({ products }) => {
             Productos destacados
           </Heading>
           <Spacer />
+          <Show above="md">
+            <Button
+              size="lg"
+              colorScheme="brand"
+              borderRadius="30px"
+              _hover={{
+                bg: 'white',
+                color: 'brand.500',
+              }}
+              onClick={() => {
+                router.push(`/catalogo`)
+              }}
+            >
+              Ver todos
+            </Button>
+          </Show>
+        </Flex>
+        <SimpleGrid
+          spacing={4}
+          templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
+        >
+          {products.map((product) => (
+            <Card key={product._id} product={product} />
+          ))}
+        </SimpleGrid>
+        <Hide above="md">
           <Button
+            mt="40px"
             size="lg"
+            width="100%"
             colorScheme="brand"
             borderRadius="30px"
             _hover={{
@@ -55,15 +85,7 @@ const FeaturedProduct: FC<ProductsProps> = ({ products }) => {
           >
             Ver todos
           </Button>
-        </Flex>
-        <SimpleGrid
-          spacing={4}
-          templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
-        >
-          {products.map((product) => (
-            <Card key={product._id} product={product} />
-          ))}
-        </SimpleGrid>
+        </Hide>
       </Container>
     </Box>
   )

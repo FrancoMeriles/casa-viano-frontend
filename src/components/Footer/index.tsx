@@ -29,7 +29,14 @@ const Footer = () => (
         py={{ base: '12', md: '16' }}
       >
         <Stack spacing={{ base: '6', md: '8' }} align="start">
-          <Image src="/casa-viano.svg" alt="Casa Viano" />
+          <Image
+            src="/casa-viano.svg"
+            alt="Casa Viano"
+            width={{
+              base: '170px',
+              md: '331px',
+            }}
+          />
         </Stack>
         <Stack
           direction={{ base: 'column-reverse', md: 'column', lg: 'row' }}

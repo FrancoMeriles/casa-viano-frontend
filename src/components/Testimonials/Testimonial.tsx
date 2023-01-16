@@ -5,6 +5,7 @@ import {
   Img,
   Stack,
   Text,
+  Show,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
 import * as React from 'react'
@@ -27,17 +28,18 @@ export const Testimonial = (props: TestimonialProps) => {
       flex="1"
       {...props}
     >
-      <Img
-        display={{ base: 'none', md: 'block' }}
-        mt="2"
-        flexShrink={0}
-        src={image}
-        alt={name}
-        objectFit="cover"
-        w={{ base: '20', md: '32' }}
-        h={{ base: '20', md: '32' }}
-        rounded="full"
-      />
+      <Show above="md">
+        <Img
+          mt="2"
+          flexShrink={0}
+          src={image}
+          alt={name}
+          objectFit="cover"
+          w={{ base: '20', md: '32' }}
+          h={{ base: '20', md: '32' }}
+          rounded="full"
+        />
+      </Show>
       <Flex w="full" direction="column">
         <Box mb="6">
           <Box
@@ -50,16 +52,17 @@ export const Testimonial = (props: TestimonialProps) => {
           </Text>
         </Box>
         <HStack>
-          <Img
-            display={{ base: 'block', md: 'none' }}
-            flexShrink={0}
-            src={image}
-            alt={name}
-            objectFit="cover"
-            w={{ base: '12', md: '32' }}
-            h={{ base: '12', md: '32' }}
-            rounded="full"
-          />
+          <Show below="md">
+            <Img
+              flexShrink={0}
+              src={image}
+              alt={name}
+              objectFit="cover"
+              w={{ base: '12', md: '32' }}
+              h={{ base: '12', md: '32' }}
+              rounded="full"
+            />
+          </Show>
           <Box>
             <Text
               as="cite"

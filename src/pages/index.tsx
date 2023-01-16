@@ -18,6 +18,9 @@ import { getErrorUrl } from '@utils/index'
 import { ProductsInterface } from '@customTypes/products'
 import { TestimonialInterface } from '@customTypes/testimonials'
 
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 export const getServerSideProps: GetServerSideProps = async () => {
   let products
   let testimonials

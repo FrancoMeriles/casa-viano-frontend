@@ -16,9 +16,21 @@ a {
   box-sizing: border-box;
 }
 
-.slick-dots li button:before {
+.slick-dots.header li button:before {
   font-size: 15px !important;
   color: white !important;
+}
+
+.slick-dots.brand li button:before {
+  font-size: 15px !important;
+}
+
+.slick-dots.testimonials {
+  bottom: -40px;
+}
+
+.slick-dots.testimonials li button:before {
+  font-size: 15px !important;
 }
 
 .chakra-breadcrumb__list-item {

@@ -1,9 +1,7 @@
 import React from 'react'
 import { Box, Container, Text, Button, Image, Heading } from '@chakra-ui/react'
-import { FaAngleRight } from 'react-icons/fa'
 import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+
 import { useRouter } from 'next/router'
 
 const Hero = () => {
@@ -16,7 +14,7 @@ const Hero = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    dotsClass: 'slick-dots fran',
+    dotsClass: 'slick-dots header',
   }
 
   return (
@@ -66,13 +64,19 @@ const Hero = () => {
               maxW="600px"
             >
               <Heading
-                fontSize="6xl"
+                fontSize={{
+                  base: '5xl',
+                  md: '6xl',
+                }}
                 fontWeight="bold"
                 color={{
                   base: 'white',
                   md: 'black',
                 }}
-                lineHeight="70px"
+                lineHeight={{
+                  base: '65px',
+                  md: '70px',
+                }}
                 mb="10px"
               >
                 Comprá la mejor maquinaría usada del mercado
@@ -91,7 +95,9 @@ const Hero = () => {
               <Button
                 size="lg"
                 bg="white"
-                borderRadius="20px"
+                mr="10px"
+                mb="10px"
+                borderRadius="50px"
                 _hover={{
                   bg: 'brand.500',
                   color: 'white',
@@ -102,7 +108,6 @@ const Hero = () => {
               </Button>
               <Button
                 size="lg"
-                ml="10px"
                 bg={{
                   base: 'brand.500',
                   md: 'transparent',
@@ -115,8 +120,8 @@ const Hero = () => {
                   bg: 'brand.500',
                   color: 'white',
                 }}
-                borderRadius="20px"
-                rightIcon={<FaAngleRight />}
+                variant="outline"
+                borderRadius="50px"
                 onClick={() => console.log('se clickeo btn 2')}
               >
                 Contactar Vendedor
