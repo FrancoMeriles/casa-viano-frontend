@@ -20,11 +20,15 @@ const BreadcrumbComp = () => {
   const { asPath, push } = useRouter()
   React.useEffect(() => {
     const paths = asPath.split('/').slice(1)
+    console.log(paths)
     let linkRoutes = ''
     const routes = paths.map((path, i) => {
       const hasQuery = path.includes('?')
       const name = hasQuery ? path.split('?')[0] : path
-      linkRoutes += `/${path}`
+      linkRoutes += `/${
+        path === 'Nuevo' ? 'new' : path === 'Usado' ? 'used' : path
+      }`
+      console.log(linkRoutes)
       let finalName = capitalizeName(name)
       if (name === 'used' || name === 'new') {
         finalName = translateCategory(name)
@@ -35,6 +39,7 @@ const BreadcrumbComp = () => {
         isCurrentPage: i + 1 === paths.length,
       }
     })
+    console.log(routes)
     setLinks(routes)
   }, [asPath])
   return (

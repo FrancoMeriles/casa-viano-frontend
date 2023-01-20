@@ -5,6 +5,9 @@ export const capitalizeName = (name: any) =>
 export const translateCategory = (category: string) =>
   category === 'used' ? 'Usado' : 'Nuevo'
 
+export const translateCategoryTitles = (category: string) =>
+  category === 'used' ? 'Usadas' : 'Nuevas'
+
 export const getErrorUrl = (err: any) => {
   return `/error?url=${err?.config?.baseURL + err?.config?.url}&method=${
     err?.config?.method

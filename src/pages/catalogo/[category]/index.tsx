@@ -11,7 +11,7 @@ import Breadcrumb from '@components/Breadcrumbs'
 import Card from '@components/Card'
 import axios from '@services/local'
 
-import { getErrorUrl, translateCategory } from '@utils/index'
+import { getErrorUrl, translateCategoryTitles } from '@utils/index'
 
 import { ProductsInterface } from '@customTypes/products'
 interface Props {
@@ -43,7 +43,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const Category = ({ category, products }: Props) => {
-  const title = `Maquinaria ${translateCategory(category)}`
+  const title = `Maquinarias ${translateCategoryTitles(category)}`
   return (
     <div>
       <Head>
