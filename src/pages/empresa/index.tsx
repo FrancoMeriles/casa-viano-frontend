@@ -6,8 +6,39 @@ import Whatsapp from '@components/Whatsapp'
 import HeaderEmpresa from '@components/HeaderEmpresa'
 import EmpresaContent from '@components/EmpresaContent'
 import Breadcrumb from '@components/Breadcrumbs'
+import { GetServerSideProps } from 'next/types'
+import { getErrorUrl } from '@utils/index'
+import service from '@services/local'
+import { MessagesInterface } from '@customTypes/messages'
 
-const index = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  let data
+  try {
+    const response = await service.get(`/messages`)
+    data = response.data
+  } catch (err) {
+    return {
+      redirect: {
+        destination: getErrorUrl(err),
+      },
+      props: {},
+    }
+  }
+
+  return {
+    props: {
+      messages: data.messages,
+    },
+  }
+}
+interface Props {
+  messages: MessagesInterface[]
+}
+
+const Company = ({ messages }: Props) => {
+  const [whatsappMessages] = messages.filter(
+    (message) => message.type === 'whatsapp-icon'
+  )
   return (
     <>
       <Head>
@@ -21,10 +52,10 @@ const index = () => {
         <HeaderEmpresa />
         <EmpresaContent />
       </main>
-      <Whatsapp />
+      <Whatsapp messages={whatsappMessages} />
       <Footer />
     </>
   )
 }
 
-export default index
+export default Company
