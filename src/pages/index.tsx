@@ -17,6 +17,7 @@ import { getErrorUrl } from '@utils/index'
 
 import { ProductsInterface } from '@customTypes/products'
 import { TestimonialInterface } from '@customTypes/testimonials'
+import { MessagesInterface } from '@customTypes/messages'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -24,10 +25,12 @@ import 'slick-carousel/slick/slick-theme.css'
 export const getServerSideProps: GetServerSideProps = async () => {
   let products
   let testimonials
+  let messages
   try {
     const requests = [
       axiosInstance.get('/products/featured'),
       axiosInstance.get('/testimonials'),
+      axiosInstance.get('/messages'),
     ]
     const responses = await axios.all(requests)
     const dataArray = responses.map((response) => response.data)
@@ -35,6 +38,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     testimonials = dataArray.filter((data) =>
       Object.hasOwn(data, 'testimonials')
     )
+    messages = dataArray.find((data) => Object.hasOwn(data, 'messages'))
   } catch (err) {
     return {
       redirect: {
@@ -48,6 +52,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       products: products[0].products,
       testimonials: testimonials[0].testimonials,
+      messages: messages.messages,
     },
   }
 }
@@ -55,9 +60,20 @@ export const getServerSideProps: GetServerSideProps = async () => {
 interface Props {
   products: ProductsInterface[]
   testimonials: TestimonialInterface[]
+  messages: MessagesInterface[]
 }
 
-const Home: FC<Props> = ({ products, testimonials }) => {
+const Home: FC<Props> = ({ products, testimonials, messages }) => {
+  const [sliderMessages] = messages.filter(
+    (message) => message.type === 'slider'
+  )
+  const [whatsappMessages] = messages.filter(
+    (message) => message.type === 'whatsapp-icon'
+  )
+  const [productMessages] = messages.filter(
+    (message) => message.type === 'product'
+  )
+
   return (
     <>
       <Head>
@@ -67,14 +83,14 @@ const Home: FC<Props> = ({ products, testimonials }) => {
       </Head>
       <Header />
       <main>
-        <Hero />
-        <FeaturedProduct products={products} />
+        <Hero messages={sliderMessages} />
+        <FeaturedProduct messages={productMessages} products={products} />
         <Counters />
         <Brands />
         <FeaturedCategory />
         <Testimonials testimonials={testimonials} />
       </main>
-      <Whatsapp />
+      <Whatsapp messages={whatsappMessages} />
       <Footer />
     </>
   )

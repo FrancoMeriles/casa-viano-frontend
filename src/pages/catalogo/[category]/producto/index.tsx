@@ -18,18 +18,28 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 import Breadcrumb from '@components/Breadcrumbs'
 
-import axios from '@services/local'
+import axiosInstance from '@services/local'
+import axios from 'axios'
 
 import { Gallery } from '@components/Gallery/Gallery'
 import { ProductsInterface } from '@customTypes/products'
 import { getErrorUrl, translateCategory } from '@utils/index'
+import { MessagesInterface } from '@customTypes/messages'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { slug } = context.query
-  let data
+
+  let product
+  let messages
   try {
-    const response = await axios.get(`/products/slug/${slug}`)
-    data = response.data
+    const requests = [
+      axiosInstance.get(`/products/slug/${slug}`),
+      axiosInstance.get('/messages'),
+    ]
+    const responses = await axios.all(requests)
+    const dataArray = responses.map((response) => response.data)
+    product = dataArray.find((data) => Object.hasOwn(data, 'product'))
+    messages = dataArray.find((data) => Object.hasOwn(data, 'messages'))
   } catch (err) {
     return {
       redirect: {
@@ -38,11 +48,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {},
     }
   }
+
   return {
     props: {
       category: context.query.category,
       slug,
-      product: data.product,
+      product: product.product,
+      messages: messages.messages,
     },
   }
 }
@@ -50,10 +62,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 interface Props {
   category: string
   slug: string
+  messages: MessagesInterface[]
   product: ProductsInterface
 }
 
-const Product = ({ category, product }: Props) => {
+const Product = ({ category, product, messages }: Props) => {
+  const [productMessages] = messages.filter(
+    (message) => message.type === 'product'
+  )
   return (
     <div>
       <Head>
@@ -169,6 +185,21 @@ const Product = ({ category, product }: Props) => {
                   colorScheme="brand"
                   padding="5px 40px"
                   leftIcon={<FaWhatsapp />}
+                  onClick={() =>
+                    window.open(
+                      `https://wa.me/${productMessages.phone}?text=${
+                        productMessages.content
+                      } Producto: ${product.name}
+                      Condición: ${
+                        product.condition === 'new' ? 'Nuevo' : 'Usado'
+                      }
+                      Disponibilidad: ${
+                        product.is_available ? 'Disponible' : 'No disponible'
+                      }
+                      `,
+                      '_blank'
+                    )
+                  }
                 >
                   Consultar ahora
                 </Button>

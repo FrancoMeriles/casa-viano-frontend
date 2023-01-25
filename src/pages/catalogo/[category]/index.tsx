@@ -9,23 +9,31 @@ import FeaturedCategory from '@components/FeaturedCategory'
 
 import Breadcrumb from '@components/Breadcrumbs'
 import Card from '@components/Card'
-import axios from '@services/local'
+import axiosInstance from '@services/local'
+import axios from 'axios'
 
 import { getErrorUrl, translateCategoryTitles } from '@utils/index'
 
 import { ProductsInterface } from '@customTypes/products'
+import { MessagesInterface } from '@customTypes/messages'
 interface Props {
   category: string
   products: ProductsInterface[]
+  messages: MessagesInterface[]
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let data
+  let products
+  let messages
   try {
-    const response = await axios.get(
-      `/products?condition=${context.query.category}`
-    )
-    data = response.data
+    const requests = [
+      axiosInstance.get(`/products?condition=${context.query.category}`),
+      axiosInstance.get('/messages'),
+    ]
+    const responses = await axios.all(requests)
+    const dataArray = responses.map((response) => response.data)
+    products = dataArray.find((data) => Object.hasOwn(data, 'products'))
+    messages = dataArray.find((data) => Object.hasOwn(data, 'messages'))
   } catch (err) {
     return {
       redirect: {
@@ -34,16 +42,35 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {},
     }
   }
+
+  // let data
+  // try {
+  //   const response = await axios.get(
+  //     `/products?condition=${context.query.category}`
+  //   )
+  //   data = response.data
+  // } catch (err) {
+  //   return {
+  //     redirect: {
+  //       destination: getErrorUrl(err),
+  //     },
+  //     props: {},
+  //   }
+  // }
   return {
     props: {
-      products: data.products,
+      products: products.products,
+      messages: messages.messages,
       category: context.query.category,
     },
   }
 }
 
-const Category = ({ category, products }: Props) => {
+const Category = ({ category, products, messages }: Props) => {
   const title = `Maquinarias ${translateCategoryTitles(category)}`
+  const [productMessages] = messages.filter(
+    (message) => message.type === 'product'
+  )
   return (
     <div>
       <Head>
@@ -73,7 +100,11 @@ const Category = ({ category, products }: Props) => {
             templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
           >
             {products.map((product) => (
-              <Card key={product._id} product={product} />
+              <Card
+                key={product._id}
+                product={product}
+                messages={productMessages}
+              />
             ))}
           </SimpleGrid>
         </Container>

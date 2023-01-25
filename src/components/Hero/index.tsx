@@ -4,7 +4,13 @@ import Slider from 'react-slick'
 
 import { useRouter } from 'next/router'
 
-const Hero = () => {
+import { MessagesInterface } from '@customTypes/messages'
+
+interface Props {
+  messages: MessagesInterface
+}
+
+const Hero = ({ messages }: Props) => {
   const router = useRouter()
 
   const settings = {
@@ -122,7 +128,12 @@ const Hero = () => {
                 }}
                 variant="outline"
                 borderRadius="50px"
-                onClick={() => console.log('se clickeo btn 2')}
+                onClick={() =>
+                  window.open(
+                    `https://wa.me/${messages.phone}?text=${messages.content}`,
+                    '_blank'
+                  )
+                }
               >
                 Contactar Vendedor
               </Button>

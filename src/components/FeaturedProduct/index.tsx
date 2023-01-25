@@ -11,14 +11,17 @@ import {
   Hide,
 } from '@chakra-ui/react'
 import { ProductsInterface } from '@customTypes/products'
+import { MessagesInterface } from '@customTypes/messages'
+
 import Card from '@components/Card'
 import { useRouter } from 'next/router'
 
 interface ProductsProps {
   products: ProductsInterface[]
+  messages: MessagesInterface
 }
 
-const FeaturedProduct: FC<ProductsProps> = ({ products }) => {
+const FeaturedProduct: FC<ProductsProps> = ({ products, messages }) => {
   const router = useRouter()
   return (
     <Box p="70px 0">
@@ -65,7 +68,7 @@ const FeaturedProduct: FC<ProductsProps> = ({ products }) => {
           templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
         >
           {products.map((product) => (
-            <Card key={product._id} product={product} />
+            <Card key={product._id} product={product} messages={messages} />
           ))}
         </SimpleGrid>
         <Hide above="md">

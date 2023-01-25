@@ -27,6 +27,7 @@ export const Testimonial = (props: TestimonialProps) => {
       spacing={{ base: '0', md: '8' }}
       flex="1"
       {...props}
+      padding="20px"
     >
       <Show above="md">
         <Img

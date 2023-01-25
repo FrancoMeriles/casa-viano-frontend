@@ -11,12 +11,14 @@ import {
 } from '@chakra-ui/react'
 
 import { ProductsInterface } from '@customTypes/products'
+import { MessagesInterface } from '@customTypes/messages'
 
 interface Props {
   product: ProductsInterface
+  messages: MessagesInterface
 }
 
-const CardComp: FC<Props> = ({ product }) => {
+const CardComp: FC<Props> = ({ product, messages }) => {
   const { images, name, condition, slug } = product
   let principalImage
   if (images && images.length > 0) {
@@ -48,6 +50,16 @@ const CardComp: FC<Props> = ({ product }) => {
           colorScheme="brand"
           size="lg"
           borderRadius="50px"
+          onClick={() =>
+            window.open(
+              `https://wa.me/${messages.phone}?text=${
+                messages.content
+              } Producto: ${name}
+              Condición: ${condition === 'new' ? 'Nuevo' : 'Usado'}
+              `,
+              '_blank'
+            )
+          }
         >
           Consultar ahora
         </Button>

@@ -1,7 +1,14 @@
 import React from 'react'
 import { IconButton } from '@chakra-ui/react'
 import { FaWhatsapp } from 'react-icons/fa'
-const Whatsapp = () => {
+
+import { MessagesInterface } from '@customTypes/messages'
+
+interface Props {
+  messages: MessagesInterface
+}
+
+const Whatsapp = ({ messages }: Props) => {
   return (
     <IconButton
       position="fixed"
@@ -19,7 +26,12 @@ const Whatsapp = () => {
       cursor="pointer"
       aria-label="Whatsapp"
       icon={<FaWhatsapp color="white" fontSize="1.5rem" />}
-      onClick={() => console.log('se clickeo whaatsapp')}
+      onClick={() =>
+        window.open(
+          `https://wa.me/${messages.phone}?text=${messages.content}`,
+          '_blank'
+        )
+      }
     />
   )
 }

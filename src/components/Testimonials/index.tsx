@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Box, Heading } from '@chakra-ui/react'
+import { Box, Heading, Container } from '@chakra-ui/react'
 import * as React from 'react'
 import { Testimonial } from './Testimonial'
 import { TestimonialInterface } from '@customTypes/testimonials'
@@ -33,26 +33,22 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
     ],
   }
   return (
-    <Box as="section" mb="80px">
-      <Box
-        maxW={{ base: 'xl', md: '7xl' }}
-        mx="auto"
-        px={{ base: '6', md: '8' }}
+    <Container>
+      <Heading
+        fontSize="5xl"
+        fontWeight="bold"
+        color="brand.500"
+        lineHeight="50px"
+        mb="10px"
       >
-        <Heading
-          fontSize="5xl"
-          fontWeight="bold"
-          color="brand.500"
-          lineHeight="50px"
-          mb="10px"
-        >
-          Testimonios
-        </Heading>
-        {/* <SimpleGrid
+        Testimonios
+      </Heading>
+      {/* <SimpleGrid
           py="16"
           columns={{ base: 1, lg: 2 }}
           spacing={{ base: '16', lg: '32' }}
         > */}
+      <Box mt="50px" mb="50px">
         <Slider {...settings}>
           {testimonials.length > 0
             ? testimonials.map((testimonial) => (
@@ -68,9 +64,9 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
               ))
             : null}
         </Slider>
-        {/* </SimpleGrid> */}
       </Box>
-    </Box>
+      {/* </SimpleGrid> */}
+    </Container>
   )
 }
 
