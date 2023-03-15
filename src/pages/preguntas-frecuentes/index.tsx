@@ -4,8 +4,8 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 import Whatsapp from '@components/Whatsapp'
 
-import HeaderContact from '@components/HeaderContact'
-import ContactContent from '@components/ContactContent'
+import HeaderFaq from '@components/HeaderFaq'
+import FaqContent from '@components/Faq'
 
 import Breadcrumb from '@components/Breadcrumbs'
 import { MessagesInterface } from '@customTypes/messages'
@@ -37,23 +37,23 @@ interface Props {
   messages: MessagesInterface[]
 }
 
-const Contact = ({ messages }: Props) => {
+const Faq = ({ messages }: Props) => {
   const [whatsappMessages] = messages.filter(
     (message) => message.type === 'whatsapp-icon'
   )
   return (
     <>
       <Head>
-        <title>Casa Viano - Contacto</title>
-        <meta name="description" content="Casa Viano - Contacto" />
+        <title>Casa Viano - Preguntas Frecuentes</title>
+        <meta name="description" content="Casa Viano - Preguntas Frecuentes" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <Breadcrumb />
 
       <main>
-        <HeaderContact />
-        <ContactContent />
+        <HeaderFaq />
+        <FaqContent />
       </main>
       <Whatsapp messages={whatsappMessages} />
       <Footer />
@@ -61,4 +61,4 @@ const Contact = ({ messages }: Props) => {
   )
 }
 
-export default Contact
+export default Faq
