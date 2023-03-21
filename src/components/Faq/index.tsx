@@ -9,7 +9,13 @@ import {
 
 const index = () => {
   return (
-    <Container maxW="600px" p="40px">
+    <Container
+      maxW="600px"
+      p={{
+        base: '20px',
+        md: '40px',
+      }}
+    >
       <Heading fontSize="2xl" color="brand.500">
         Preguntas frecuentes
       </Heading>

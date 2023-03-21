@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Container, Text, Button, Image, Heading } from '@chakra-ui/react'
 import Slider from 'react-slick'
+import { BiChevronRight } from 'react-icons/bi'
 
 import { useRouter } from 'next/router'
 
@@ -24,9 +25,18 @@ const Hero = ({ messages }: Props) => {
   }
 
   return (
-    <Box position="relative" pb="80px">
+    <Box
+      position="relative"
+      pb={{
+        base: '0px',
+        md: '80px',
+      }}
+    >
       <Box
-        bg="brand.500"
+        bg={{
+          base: 'transparent',
+          md: 'brand.500',
+        }}
         position="absolute"
         bottom="0"
         height={{
@@ -35,12 +45,25 @@ const Hero = ({ messages }: Props) => {
         }}
         width="100%"
       />
-      <Container>
+      <Container
+        padding={{
+          base: '0px',
+          md: 'auto',
+        }}
+      >
         <Slider {...settings}>
           <Box position="relative">
             <Image
               src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
               alt="imagen 1"
+              height={{
+                base: '452px',
+                md: 'auto',
+              }}
+              objectFit={{
+                base: 'cover',
+                md: 'inherit',
+              }}
             />
             <Box
               mt={{
@@ -52,15 +75,14 @@ const Hero = ({ messages }: Props) => {
                 md: '0',
               }}
               position={{
-                base: 'relative',
-                md: 'absolute',
+                base: 'absolute',
               }}
               top={{
                 base: '0',
                 md: '50%',
               }}
-              pl={{
-                base: '0',
+              p={{
+                base: '10px',
                 md: '40px',
               }}
               transform={{
@@ -80,7 +102,7 @@ const Hero = ({ messages }: Props) => {
                   md: 'black',
                 }}
                 lineHeight={{
-                  base: '65px',
+                  base: '50px',
                   md: '70px',
                 }}
                 mb="10px"
@@ -93,6 +115,10 @@ const Hero = ({ messages }: Props) => {
                   base: 'white',
                   md: 'black',
                 }}
+                display={{
+                  base: 'none',
+                  md: 'block',
+                }}
                 mb="20px"
               >
                 Mirá nuestro amplio catálogo y recibí asesoramiento
@@ -103,31 +129,38 @@ const Hero = ({ messages }: Props) => {
                 bg="white"
                 mr="10px"
                 mb="10px"
+                mt={{
+                  base: '40px',
+                  sm: '20px',
+                }}
                 borderRadius="50px"
                 _hover={{
                   bg: 'brand.500',
                   color: 'white',
+                }}
+                width={{
+                  base: '100%',
+                  sm: 'auto',
                 }}
                 onClick={() => router.push(`/catalogo`)}
               >
-                Ver productos
+                Ver catálogo
               </Button>
               <Button
                 size="lg"
-                bg={{
-                  base: 'brand.500',
-                  md: 'transparent',
+                width={{
+                  base: '100%',
+                  sm: 'auto',
                 }}
-                color={{
-                  base: 'white',
-                  md: 'inherit',
+                mt={{
+                  base: '10px',
+                  sm: '10px',
                 }}
                 _hover={{
-                  bg: 'brand.500',
-                  color: 'white',
+                  background: 'none',
                 }}
-                variant="outline"
-                borderRadius="50px"
+                rightIcon={<BiChevronRight />}
+                variant="ghost"
                 onClick={() =>
                   window.open(
                     `https://wa.me/${messages.phone}?text=${messages.content}`,

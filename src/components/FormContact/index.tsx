@@ -44,7 +44,13 @@ export default function FormContact() {
     // }
   }
   return (
-    <Box p="50px">
+    <Box
+      p={{
+        base: '10px',
+        sm: '30px',
+        md: '50px',
+      }}
+    >
       <Formik
         initialValues={{
           name: '',

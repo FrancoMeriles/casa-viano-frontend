@@ -21,6 +21,10 @@ const Counters = () => {
             wrap="wrap"
             justifyContent="center"
             alignItems="center"
+            flexDirection={{
+              base: 'column',
+              md: 'row',
+            }}
             m="0 20px"
           >
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
@@ -32,7 +36,16 @@ const Counters = () => {
                 )}
               </CountUp>
             </Text>
-            <Heading ml="4" fontSize="2xl" fontWeight="bold" color="white">
+            <Heading
+              ml={{
+                base: '0px',
+                md: '4',
+              }}
+              lineHeight="inherit"
+              fontSize="2xl"
+              fontWeight="bold"
+              color="white"
+            >
               Generaciones
             </Heading>
           </Flex>
@@ -41,6 +54,10 @@ const Counters = () => {
             justifyContent="center"
             alignItems="center"
             m="0 20px"
+            flexDirection={{
+              base: 'column',
+              md: 'row',
+            }}
           >
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
               <CountUp end={112} separator=".">
@@ -52,12 +69,21 @@ const Counters = () => {
               </CountUp>
             </Text>
             <Heading
-              ml="4"
+              ml={{
+                base: '0px',
+                md: '4',
+              }}
               fontSize="2xl"
               fontWeight="bold"
               color="white"
               maxW="140"
-              lineHeight="30px"
+              lineHeight={{
+                base: '30px',
+              }}
+              textAlign={{
+                base: 'center',
+                md: 'left',
+              }}
             >
               Años de trayectoria
             </Heading>
@@ -67,6 +93,10 @@ const Counters = () => {
             justifyContent="center"
             alignItems="center"
             m="0 20px"
+            flexDirection={{
+              base: 'column',
+              md: 'row',
+            }}
           >
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
               <CountUp prefix="+" end={10000} separator=".">
@@ -78,12 +108,19 @@ const Counters = () => {
               </CountUp>
             </Text>
             <Heading
-              ml="4"
+              ml={{
+                base: '0px',
+                md: '4',
+              }}
               fontSize="2xl"
               fontWeight="bold"
               color="white"
               maxW="150"
               lineHeight="30px"
+              textAlign={{
+                base: 'center',
+                md: 'left',
+              }}
             >
               Maquinarias vendidas
             </Heading>

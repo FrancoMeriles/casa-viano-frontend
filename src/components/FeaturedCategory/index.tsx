@@ -5,22 +5,39 @@ import { FaAngleRight } from 'react-icons/fa'
 export default function FeaturedCategory() {
   const { push } = useRouter()
   return (
-    <Container position="relative" mt="80px" mb="80px">
-      <Image src="/img/featured_category.png" alt="Featured Category" />
+    <Container
+      position="relative"
+      mt="80px"
+      mb="80px"
+      padding={{
+        base: '0px',
+        md: 'inherit',
+      }}
+    >
+      <Image
+        src="/img/featured_category.png"
+        alt="Featured Category"
+        height={{
+          base: '400px',
+          md: 'auto',
+        }}
+        objectFit="cover"
+      />
       <Box
         padding="30px 50px 30px 30px"
         borderRadius="5px"
-        position={{
-          base: 'relative',
-          md: 'absolute',
-        }}
+        position="absolute"
         bottom={{
-          base: '0',
+          base: '5',
           md: '10',
         }}
         left={{
-          base: '0',
-          md: '20',
+          base: '5',
+          md: '10',
+        }}
+        right={{
+          base: '5',
+          md: 'auto',
         }}
         bg="white"
       >
