@@ -67,9 +67,10 @@ const FeaturedProduct: FC<ProductsProps> = ({ products, messages }) => {
           spacing={4}
           templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
         >
-          {products.map((product) => (
-            <Card key={product._id} product={product} messages={messages} />
-          ))}
+          {products &&
+            products.map((product) => (
+              <Card key={product._id} product={product} messages={messages} />
+            ))}
         </SimpleGrid>
         <Hide above="md">
           <Button
