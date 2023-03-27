@@ -42,8 +42,21 @@ const Footer = () => (
           direction={{ base: 'column-reverse', md: 'column', lg: 'row' }}
           spacing={{ base: '12', md: '8' }}
         >
-          <Stack direction="row" wrap="wrap">
-            <Stack m="0" minW="36">
+          <Stack
+            direction={{
+              sm: 'row',
+              base: 'column',
+            }}
+            wrap="wrap"
+          >
+            <Stack
+              mb={{
+                sm: '0',
+                base: '20px',
+              }}
+              color="red"
+              minW="36"
+            >
               <Text fontSize="md" fontWeight="extrabold" color="muted">
                 NOSOTROS
               </Text>
@@ -53,7 +66,13 @@ const Footer = () => (
                 </Button>
               </Stack>
             </Stack>
-            <Stack m="0" minW="36">
+            <Stack
+              mb={{
+                sm: '0',
+                base: '20px !important',
+              }}
+              minW="36"
+            >
               <Text fontSize="md" fontWeight="extrabold" color="muted">
                 MAQUINARIAS
               </Text>
@@ -69,7 +88,7 @@ const Footer = () => (
                 </Button>
               </Stack>
             </Stack>
-            <Stack m="0" minW="36">
+            <Stack minW="36">
               <Text fontSize="md" fontWeight="extrabold" color="muted">
                 CONSULTAS
               </Text>

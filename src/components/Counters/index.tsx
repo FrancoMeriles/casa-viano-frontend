@@ -16,7 +16,14 @@ const Counters = () => {
       m="50px 0"
     >
       <Container p="80px 0">
-        <Flex wrap="wrap" justifyContent="center">
+        <Flex
+          wrap="wrap"
+          justifyContent="center"
+          flexDirection={{
+            base: 'column',
+            sm: 'row',
+          }}
+        >
           <Flex
             wrap="wrap"
             justifyContent="center"

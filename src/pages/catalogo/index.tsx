@@ -1,18 +1,12 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import {
-  Container,
-  Text,
-  Flex,
-  Box,
-  Image,
-  Button,
-  Heading,
-} from '@chakra-ui/react'
+import { Container, Flex, Box, Image, Button, Heading } from '@chakra-ui/react'
 
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+
+import HeaderCatalogo from '@components/HeaderCatalogo'
 
 import Breadcrumb from '@components/Breadcrumbs'
 
@@ -29,22 +23,8 @@ export default function Home() {
       <Header />
       <Breadcrumb />
       <main>
+        <HeaderCatalogo />
         <Container mt="50px">
-          <Heading
-            fontSize="5xl"
-            fontWeight="bold"
-            color="brand.500"
-            lineHeight="50px"
-            mb="30px"
-            letterSpacing="0"
-            maxW="300"
-          >
-            Catálogo de maquinarías
-          </Heading>
-          <Text fontSize="2xl" mb="10px" maxW="550">
-            Encontrá la maquinaría que búscas y recibí asesoramiento online
-            personalizado.
-          </Text>
           <Flex
             mt="60px"
             mb="60px"

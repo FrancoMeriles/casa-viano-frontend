@@ -5,6 +5,7 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Text,
 } from '@chakra-ui/react'
 
 const index = () => {
@@ -62,6 +63,20 @@ const index = () => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
+      <Box>
+        <Text p="20px">
+          Si tienes alguna otra pregunta o necesitas recibir asesoramiento, no
+          dudes en{' '}
+          <Box
+            as="a"
+            color="blue.900"
+            textDecoration="underline"
+            href="/contacto"
+          >
+            ponerte en contacto con nosotros.
+          </Box>
+        </Text>
+      </Box>
     </Container>
   )
 }
