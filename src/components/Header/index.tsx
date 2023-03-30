@@ -109,10 +109,10 @@ const Header = () => {
             </MenuButton>
             <MenuList>
               <MenuItem onClick={() => push('/catalogo/used')}>
-                Maquinarias usadas
+                Maquinárias usadas
               </MenuItem>
               <MenuItem onClick={() => push('/catalogo/new')}>
-                Maquinarias nuevas
+                Maquinárias nuevas
               </MenuItem>
             </MenuList>
           </Menu>
@@ -289,10 +289,10 @@ const Header = () => {
               fontSize="1xl"
               position="relative"
               onClick={() => {
-                push('/catalogo')
+                push('/catalogo/used')
               }}
             >
-              Maquinária usada
+              Maquinárias usada
             </Link>
             <Link
               mt="10px"
@@ -300,10 +300,10 @@ const Header = () => {
               fontSize="1xl"
               position="relative"
               onClick={() => {
-                push('/catalogo')
+                push('/catalogo/new')
               }}
             >
-              Maquinária nueva
+              Maquinárias nueva
             </Link>
             <Divider borderColor="white" opacity=".3" mt="15px" />
             <Link
