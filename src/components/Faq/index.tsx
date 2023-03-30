@@ -64,7 +64,7 @@ const index = () => {
         </AccordionItem>
       </Accordion>
       <Box>
-        <Text p="20px">
+        <Text p="20px" mt="48px">
           Si tienes alguna otra pregunta o necesitas recibir asesoramiento, no
           dudes en{' '}
           <Box

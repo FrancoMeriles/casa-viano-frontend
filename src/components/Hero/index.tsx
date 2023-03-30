@@ -54,7 +54,7 @@ const Hero = ({ messages }: Props) => {
         <Slider {...settings}>
           <Box position="relative">
             <Image
-              src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
+              src="/img/slider-1.jpeg"
               alt="imagen 1"
               height={{
                 base: '452px',
@@ -63,6 +63,10 @@ const Hero = ({ messages }: Props) => {
               objectFit={{
                 base: 'cover',
                 md: 'inherit',
+              }}
+              objectPosition={{
+                base: 'right',
+                md: 'right',
               }}
             />
             <Box
@@ -97,24 +101,41 @@ const Hero = ({ messages }: Props) => {
                   md: '6xl',
                 }}
                 fontWeight="bold"
-                color={{
-                  base: 'white',
-                  md: 'black',
-                }}
+                color="white"
                 lineHeight={{
                   base: '50px',
                   md: '70px',
                 }}
                 mb="10px"
+                display={{
+                  base: 'none',
+                  sm: 'block',
+                }}
               >
                 Comprá la mejor maquinaría usada del mercado
               </Heading>
+              <Heading
+                fontSize={{
+                  base: '5xl',
+                  md: '6xl',
+                }}
+                fontWeight="bold"
+                color="white"
+                lineHeight={{
+                  base: '50px',
+                  md: '70px',
+                }}
+                mb="10px"
+                display={{
+                  base: 'block',
+                  sm: 'none',
+                }}
+              >
+                Comprá la mejor maquinaría del mercado
+              </Heading>
               <Text
                 fontSize="2xl"
-                color={{
-                  base: 'white',
-                  md: 'black',
-                }}
+                color="white"
                 display={{
                   base: 'none',
                   md: 'block',
@@ -161,6 +182,7 @@ const Hero = ({ messages }: Props) => {
                 }}
                 rightIcon={<BiChevronRight />}
                 variant="ghost"
+                color="white"
                 onClick={() =>
                   window.open(
                     `https://wa.me/${messages.phone}?text=${messages.content}`,

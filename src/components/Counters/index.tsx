@@ -35,7 +35,7 @@ const Counters = () => {
             m="0 20px"
           >
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
-              <CountUp end={4} separator=".">
+              <CountUp end={4} separator="." duration={4}>
                 {({ countUpRef, start }) => (
                   <VisibilitySensor onChange={start}>
                     <span ref={countUpRef} />
@@ -67,7 +67,7 @@ const Counters = () => {
             }}
           >
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
-              <CountUp end={112} separator=".">
+              <CountUp end={112} separator="." duration={4}>
                 {({ countUpRef, start }) => (
                   <VisibilitySensor onChange={start}>
                     <span ref={countUpRef} />
@@ -106,7 +106,7 @@ const Counters = () => {
             }}
           >
             <Text fontSize="7xl" fontWeight="bold" color="brand.500">
-              <CountUp prefix="+" end={10000} separator=".">
+              <CountUp prefix="+" end={10000} separator="." duration={4}>
                 {({ countUpRef, start }) => (
                   <VisibilitySensor onChange={start}>
                     <span ref={countUpRef} />

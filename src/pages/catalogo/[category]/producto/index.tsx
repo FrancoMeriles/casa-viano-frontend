@@ -112,11 +112,21 @@ const Product = ({ category, product, messages }: Props) => {
                       borderBottom="solid"
                       borderBottomWidth="1px"
                       borderBottomColor="gray.300"
+                      direction={{
+                        base: 'column',
+                        md: 'row',
+                      }}
                     >
-                      <Text fontSize="1xl" color="black" flex="1">
+                      <Text fontSize="1xl" color="black" flex="1" p="5">
                         {attribute.key}
                       </Text>
-                      <Text fontSize="1xl" color="black" flex="4">
+                      <Text
+                        fontSize="1xl"
+                        color="black"
+                        flex="4"
+                        bg="#F8FAFC"
+                        p="5"
+                      >
                         {attribute.value}
                       </Text>
                     </Flex>

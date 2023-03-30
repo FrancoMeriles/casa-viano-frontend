@@ -40,7 +40,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     )
     messages = dataArray.find((data) => Object.hasOwn(data, 'messages'))
   } catch (err) {
-    console.log('here')
     console.log(err)
     return {
       redirect: {

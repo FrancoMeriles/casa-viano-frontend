@@ -218,6 +218,10 @@ export default function FormContact() {
                 borderRadius="50px"
                 pl="50px"
                 pr="50px"
+                width={{
+                  base: '100%',
+                  sm: 'auto',
+                }}
               >
                 Enviar Consulta
               </Button>
