@@ -14,7 +14,6 @@ import { useRouter } from 'next/router'
 
 import {
   FaInstagram,
-  FaLinkedin,
   FaFacebook,
   FaMapMarkerAlt,
   FaAt,
