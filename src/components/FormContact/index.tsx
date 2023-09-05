@@ -185,7 +185,8 @@ export default function FormContact() {
                 size="lg"
                 placeholder="Selecciona el motivo de tu consulta"
               >
-                <option value="nose">Nose</option>
+                <option value="nuevo">Nuevo</option>
+                <option value="usado">Usado</option>
               </Field>
               <FormErrorMessage>{errors.about}</FormErrorMessage>
             </FormControl>

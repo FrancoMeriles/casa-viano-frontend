@@ -1,5 +1,13 @@
 import React from 'react'
-import { Box, Container, Text, Button, Image, Heading } from '@chakra-ui/react'
+import {
+  Box,
+  Container,
+  Text,
+  Button,
+  Image,
+  Heading,
+  LinkOverlay,
+} from '@chakra-ui/react'
 import Slider from 'react-slick'
 import { BiChevronRight } from 'react-icons/bi'
 
@@ -54,7 +62,7 @@ const Hero = ({ messages }: Props) => {
         <Slider {...settings}>
           <Box position="relative">
             <Image
-              src="/img/slider-1.jpeg"
+              src="/img/slider-10.jpeg"
               alt="imagen 1"
               height={{
                 base: '452px',
@@ -194,36 +202,132 @@ const Hero = ({ messages }: Props) => {
               </Button>
             </Box>
           </Box>
-          <div>
-            <Image
-              src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
-              alt="imagen 1"
-            />
-          </div>
-          <div>
-            <Image
-              src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
-              alt="imagen 1"
-            />
-          </div>
-          <div>
-            <Image
-              src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
-              alt="imagen 1"
-            />
-          </div>
-          <div>
-            <Image
-              src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
-              alt="imagen 1"
-            />
-          </div>
-          <div>
-            <Image
-              src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
-              alt="imagen 1"
-            />
-          </div>
+          <LinkOverlay href="/catalogo/used">
+            <Box position="relative">
+              <Image src="/img/slider-2.jpg" alt="usados" />
+              <Box
+                mt={{
+                  base: '40px',
+                  md: '0',
+                }}
+                mb={{
+                  base: '40px',
+                  md: '0',
+                }}
+                position={{
+                  base: 'absolute',
+                }}
+                top={{
+                  base: '0',
+                  md: '50%',
+                }}
+                p={{
+                  base: '10px',
+                  md: '40px',
+                }}
+                transform={{
+                  base: 'inherit',
+                  md: 'translateY(-50%)',
+                }}
+                maxW="600px"
+              >
+                <Heading
+                  fontSize={{
+                    base: '5xl',
+                    md: '6xl',
+                  }}
+                  fontWeight="bold"
+                  color="white"
+                  lineHeight={{
+                    base: '50px',
+                    md: '70px',
+                  }}
+                  mb="10px"
+                  display={{
+                    base: 'none',
+                    sm: 'block',
+                  }}
+                >
+                  Maquinarias usadas
+                </Heading>
+              </Box>
+            </Box>
+          </LinkOverlay>
+          <LinkOverlay href="/catalogo/new">
+            <Box position="relative">
+              <Image src="/img/slider-3.jpg" alt="nuevos" />
+              <Box
+                mt={{
+                  base: '40px',
+                  md: '0',
+                }}
+                mb={{
+                  base: '40px',
+                  md: '0',
+                }}
+                position={{
+                  base: 'absolute',
+                }}
+                top={{
+                  base: '0',
+                  md: '50%',
+                }}
+                p={{
+                  base: '10px',
+                  md: '40px',
+                }}
+                transform={{
+                  base: 'inherit',
+                  md: 'translateY(-50%)',
+                }}
+                maxW="600px"
+              >
+                <Heading
+                  fontSize={{
+                    base: '5xl',
+                    md: '6xl',
+                  }}
+                  fontWeight="bold"
+                  color="white"
+                  lineHeight={{
+                    base: '50px',
+                    md: '70px',
+                  }}
+                  mb="10px"
+                  display={{
+                    base: 'none',
+                    sm: 'block',
+                  }}
+                >
+                  Maquinarias nuevas
+                </Heading>
+              </Box>
+            </Box>
+          </LinkOverlay>
+          {/* <div>
+<Image
+src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
+alt="imagen 1"
+/>
+</div>
+<div>
+<Image
+src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
+alt="imagen 1"
+/>
+</div>
+<div>
+<Image
+src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
+alt="imagen 1"
+/>
+</div>
+<div>
+<Image
+src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
+alt="imagen 1"
+/>
+</div> */}
         </Slider>
       </Container>
     </Box>

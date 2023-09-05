@@ -1,4 +1,4 @@
-import { Box, Flex, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Stack, Text, LinkOverlay, Image } from '@chakra-ui/react'
 import FormContact from '@components/FormContact'
 import { FaMapMarkerAlt, FaAt, FaWhatsapp } from 'react-icons/fa'
 
@@ -12,7 +12,31 @@ export default function ContactContent() {
         }}
       >
         <Box flex="1">
-          <Box>mapa here</Box>
+          <LinkOverlay
+            href="https://goo.gl/maps/BqYMGLwhAYXCcUbV8"
+            target="_blank"
+          >
+            <Image
+              display={{
+                base: 'none',
+                md: 'block',
+              }}
+              h="100%"
+              objectFit="cover"
+              src="/img/map.png"
+              alt="Mapa"
+            />
+            <Image
+              display={{
+                base: 'block',
+                md: 'none',
+              }}
+              h="100%"
+              objectFit="cover"
+              src="/img/map-s.png"
+              alt="Mapa"
+            />
+          </LinkOverlay>
         </Box>
         <Box
           display={{
