@@ -202,7 +202,7 @@ const Hero = ({ messages }: Props) => {
               </Button>
             </Box>
           </Box>
-          <Box position="relative">            
+          <Box position="relative">
             <LinkOverlay href="/catalogo/used">
               <Image src="/img/slider-2.jpg" alt="usados" />
               <Box
