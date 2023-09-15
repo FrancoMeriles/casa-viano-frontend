@@ -202,8 +202,8 @@ const Hero = ({ messages }: Props) => {
               </Button>
             </Box>
           </Box>
-          <LinkOverlay href="/catalogo/used">
-            <Box position="relative">
+          <Box position="relative">            
+            <LinkOverlay href="/catalogo/used">
               <Image src="/img/slider-2.jpg" alt="usados" />
               <Box
                 mt={{
@@ -251,10 +251,10 @@ const Hero = ({ messages }: Props) => {
                   Maquinarias usadas
                 </Heading>
               </Box>
-            </Box>
-          </LinkOverlay>
-          <LinkOverlay href="/catalogo/new">
-            <Box position="relative">
+            </LinkOverlay>
+          </Box>
+          <Box position="relative">
+            <LinkOverlay href="/catalogo/new">
               <Image src="/img/slider-3.jpg" alt="nuevos" />
               <Box
                 mt={{
@@ -302,32 +302,8 @@ const Hero = ({ messages }: Props) => {
                   Maquinarias nuevas
                 </Heading>
               </Box>
-            </Box>
-          </LinkOverlay>
-          {/* <div>
-<Image
-src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
-alt="imagen 1"
-/>
-</div>
-<div>
-<Image
-src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
-alt="imagen 1"
-/>
-</div>
-<div>
-<Image
-src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
-alt="imagen 1"
-/>
-</div>
-<div>
-<Image
-src="https://dummyimage.com/1200x600/e0e0e0/7d7d7d"
-alt="imagen 1"
-/>
-</div> */}
+            </LinkOverlay>
+          </Box>
         </Slider>
       </Container>
     </Box>
